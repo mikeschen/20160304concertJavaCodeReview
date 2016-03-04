@@ -1,0 +1,21 @@
+body {
+  font-size: medium;
+  color: #53bf6b;
+  background-image: url("/img/backgroundconcert.jpg");
+}
+
+a:link {
+    color: #a2ea2e;
+}
+
+a:visited {
+    color: #b1eb1e;
+}
+
+a:hover {
+    color: #7cfc00;
+}
+
+.copyright {
+	font-size: 12px;
+}
