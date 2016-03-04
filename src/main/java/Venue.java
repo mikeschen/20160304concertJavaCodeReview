@@ -18,7 +18,7 @@ public class Venue {
   }
 
   public static List<Venue> all() {
-    String sql = "SELECT id, name FROM venues";
+    String sql = "SELECT id, name FROM venues ORDER BY name";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Venue.class);
     }
