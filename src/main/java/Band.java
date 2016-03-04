@@ -1,7 +1,6 @@
-//adds to join
-
 import java.util.*;
 import org.sql2o.*;
+import org.apache.commons.lang.WordUtils;
 
 public class Band {
   private int id;
@@ -9,7 +8,7 @@ public class Band {
 
   public Band(String name) {
     this.id = id;
-    this.name = name;
+    this.name = WordUtils.capitalize(name);
   }
 
   //Geters
@@ -32,7 +31,7 @@ public class Band {
   }
 
   public static List<Band> all() {
-    String sql = "SELECT * FROM bands";
+    String sql = "SELECT * FROM bands ORDER BY name";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Band.class);
     }
@@ -41,7 +40,7 @@ public class Band {
   //CREATE
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO bands(name) VALUES(:name)";
+      String sql = "INSERT INTO bands(name) VALUES (:name)";
       this.id = (int)con.createQuery(sql, true)
       .addParameter("name", name)
       .executeUpdate()

@@ -5,7 +5,14 @@
 <!-- FORM TO ADD BAND -->
 <form action="/band/new" method="post" class="form-inline">
 	<div class="form-group">
-		<input id="band" name="band" type="text" class="form-control" placeholder="Band Name">
+		<input id="bandName" name="bandName" type="text" class="form-control" placeholder="Band Name">
 		<button type="submit" class="btn btn-success">Add Band</button>
 	</div>
 </form>
+
+<h2>Bands List</h2>
+<ul>
+#foreach ($band in $bands)
+	<li><a href="/band/$band.getId()">$band.getName()</a>
+#end
+</ul>
