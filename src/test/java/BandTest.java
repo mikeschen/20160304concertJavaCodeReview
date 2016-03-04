@@ -36,4 +36,20 @@ public class BandTest {
     assertTrue(testBand.equals(savedBand));
   }
 
+  @Test
+	  public void updateName_updatesNamePropertyOfBandObject_true(){
+		Band testBand = new Band("Sting");
+		testBand.save();
+		testBand.update("Queen");
+		assertEquals(Band.all().get(0).getName(), "Queen");
+  }
+
+  @Test
+	  public void deleteBand_deletesBand_true(){
+		Band testBand = new Band("Sting");
+		testBand.save();
+		assertEquals(Band.all().size(), 1);
+		testBand.delete();
+		assertEquals(Band.all().size(), 0);
+  }
 }

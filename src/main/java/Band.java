@@ -38,6 +38,7 @@ public class Band {
     }
   }
 
+  //CREATE
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO bands(name) VALUES(:name)";
@@ -48,6 +49,7 @@ public class Band {
     }
   }
 
+  //READ
   public static Band find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM bands WHERE id=:id";
@@ -55,6 +57,27 @@ public class Band {
         .addParameter("id", id)
         .executeAndFetchFirst(Band.class);
       return band;
+    }
+  }
+
+  //UPDATE
+  public void update(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE bands SET name = :name WHERE id=:id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
+  //DELETE
+  public void delete() {
+    String sql = "DELETE FROM bands WHERE id=:id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
     }
   }
 }
