@@ -9,10 +9,24 @@
 		<button type="submit" class="btn btn-success">Add Band</button>
 	</div>
 </form>
+<!-- FORM TO ADD VENUE -->
+<form action="/venue/new" method="post" class="form-inline">
+	<div class="form-group">
+		<input id="venueName" name="venueName" type="text" class="form-control" placeholder="Venue Name" required>
+		<button type="submit" class="btn btn-info">Add Venue</button>
+	</div>
+</form>
 
 <h2>Bands List</h2>
 <ul>
 #foreach ($band in $bands)
-	<li><a href="/band/$band.getId()">$band.getName()</a>
+	<li><a href="/band/$band.getId()">$band.getName()</a></li>
+#end
+</ul>
+<br>
+<h2>Venues List</h2>
+<ul>
+#foreach ($venue in $venues)
+	<li>$venue.getName()</li>
 #end
 </ul>

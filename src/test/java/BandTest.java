@@ -52,4 +52,15 @@ public class BandTest {
 		testBand.delete();
 		assertEquals(Band.all().size(), 0);
   }
+
+  @Test
+    public void addToVenue_createsRecordInBandsVenuesTable_true(){
+    Band testBand = new Band("Queen");
+    testBand.save();
+    Venue testVenue = new Venue("Crystal Ballroom");
+    testVenue.save();
+    testBand.addVenue(testVenue.getId());
+    Venue savedVenue = testBand.getVenues().get(0);
+    assertTrue(testVenue.equals(savedVenue));
+  }
 }
