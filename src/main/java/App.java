@@ -19,12 +19,11 @@ public class App {
 
 		//VIEW INDIVIDUAL BAND
     get("/band/:id", (request, response) -> {
-			HashMap<String, Object> model = new HashMap<String, Object>();
-			Band band = Band.find(Integer.parseInt(request.params(":id")));
-			model.put("band", band);
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
       model.put("assignedVenues", band.getVenues());
       model.put("venues", Venue.all());
- 		  model.put("template", "templates/band.vtl");
+      model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -48,15 +47,15 @@ public class App {
       return null;
     });
 
-    //ASSIGN VENUE TO BAND
-    post("/band/:id/assign-venue", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      Band band = Band.find(Integer.parseInt(request.params(":id")));
-      int venueId = Integer.valueOf(request.queryParams("venueId"));
-      band.addVenue(venueId);
-      String url = String.format("/band/%d", band.getId());
-      response.redirect(url);
-      return null;
-    });
+    // //ASSIGN VENUE TO BAND
+    // post("/band/:id/assign-venue", (request, response) -> {
+    //   HashMap<String, Object> model = new HashMap<String, Object>();
+    //   Band band = Band.find(Integer.parseInt(request.params(":id")));
+    //   int venueId = Integer.valueOf(request.queryParams("venueId"));
+    //   band.addVenue(venueId);
+    //   String url = String.format("/band/%d", band.getId());
+    //   response.redirect(url);
+    //   return null;
+    // });
 	}
 }
