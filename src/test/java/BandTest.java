@@ -20,4 +20,12 @@ public class BandTest {
   	assertTrue(savedBand.equals(testBand));
   }
 
+  @Test
+  public void save_assignsIdToBand() {
+    Band testBand = new Band("Sting");
+    testBand.save();
+    Band savedBand = Band.all().get(0);
+    assertEquals(testBand.getId(), savedBand.getId());
+  }
+
 }
