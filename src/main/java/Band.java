@@ -37,4 +37,14 @@ public class Band {
       return con.createQuery(sql).executeAndFetch(Band.class);
     }
   }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands(name) VALUES(:name)";
+      this.id = (int)con.createQuery(sql, true)
+      .addParameter("name", name)
+      .executeUpdate()
+      .getKey();
+    }
+  }
 }
