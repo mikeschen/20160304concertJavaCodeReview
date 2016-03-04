@@ -28,4 +28,12 @@ public class BandTest {
     assertEquals(testBand.getId(), savedBand.getId());
   }
 
+  @Test
+  public void find_findsBandInDatabase_true() {
+    Band testBand = new Band("Sting");
+    testBand.save();
+    Band savedBand = Band.find(testBand.getId());
+    assertTrue(testBand.equals(savedBand));
+  }
+
 }
