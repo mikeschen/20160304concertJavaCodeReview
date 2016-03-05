@@ -1,7 +1,6 @@
 <h1>Concert Finder</h1>
 <img src="/img/concert.jpg" alt="mainImage">
-<h3>Add a Band</h3>
-<hr>
+<br>
 <!-- FORM TO ADD BAND -->
 <form action="/band/new" method="post" class="form-inline">
 	<div class="form-group">
@@ -9,6 +8,7 @@
 		<button type="submit" class="btn btn-success">Add Band</button>
 	</div>
 </form>
+<br>
 <!-- FORM TO ADD VENUE -->
 <form action="/venue/new" method="post" class="form-inline">
 	<div class="form-group">
@@ -16,17 +16,33 @@
 		<button type="submit" class="btn btn-info">Add Venue</button>
 	</div>
 </form>
-
+<hr>
 <h2>Bands List</h2>
+#if($bands)
 <ul>
 #foreach ($band in $bands)
-	<li><a href="/band/$band.getId()">$band.getName()</a></li>
+	<li><a href="/band/$band.getId()">$band.getName()</a><h5>Click to Add Venues Played</h5></li>
+	<form action="/update/band/$band.getId()" method="get">
+    <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
+    <button type="submit" id="$band.getId()" class="btn btn-warning">Update Name</button>
+  </form>
+  <form action="/delete/band/$band.getId()" method="post">
+    <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
+    <button type="submit" id="$band.getId()" class="btn btn-danger">Delete Band</button>
+  </form></li>
 #end
 </ul>
-<br>
+#else
+  <p>There are no bands yet.</p>
+#end
+<hr>
 <h2>Venues List</h2>
+#if($venues)
 <ul>
 #foreach ($venue in $venues)
 	<li>$venue.getName()</li>
 #end
 </ul>
+#else
+  <p>There are no venues yet.</p>
+#end

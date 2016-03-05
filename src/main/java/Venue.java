@@ -1,5 +1,6 @@
 import java.util.*;
 import org.sql2o.*;
+import org.apache.commons.lang.WordUtils;
 
 public class Venue {
   private int id;
@@ -14,7 +15,7 @@ public class Venue {
   }
 
   public Venue(String name) {
-    this.name = name;
+    this.name = WordUtils.capitalize(name);
   }
 
   public static List<Venue> all() {

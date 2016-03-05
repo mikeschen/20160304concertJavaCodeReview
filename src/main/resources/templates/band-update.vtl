@@ -1,0 +1,9 @@
+band-update.vtl
+<h1>Update $band.getName()</h1>
+
+<form action="/update/band/$band.getId()" method="post">
+  <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
+  <label for="bandName">Update Band Name</label>
+<input id="bandName" name="bandName" type="text" value="$band.getName()">
+  <button type="submit" id="$sband.getId()" class="btn btn-warning">Update</button>
+</form>

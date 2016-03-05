@@ -49,7 +49,7 @@ public class BandTest {
 		Band testBand = new Band("Sting");
 		testBand.save();
 		assertEquals(Band.all().size(), 1);
-		testBand.delete();
+		testBand.delete(testBand.getId());
 		assertEquals(Band.all().size(), 0);
   }
 

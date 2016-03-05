@@ -1,7 +1,11 @@
 body {
   font-size: medium;
-  color: #53bf6b;
+  color: #f5f4f4;
   background-image: url("/img/backgroundconcert.jpg");
+}
+
+input, select, textarea{
+  color: #666666;
 }
 
 a:link {
