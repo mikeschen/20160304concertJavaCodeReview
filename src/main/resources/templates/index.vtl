@@ -18,31 +18,26 @@
 </form>
 <hr>
 <h2>Bands List</h2>
-#if($bands)
-<ul>
-#foreach ($band in $bands)
-	<li><a href="/band/$band.getId()">$band.getName()</a><h5>Click to Add Venues Played</h5></li>
-	<form action="/update/band/$band.getId()" method="get">
-    <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
-    <button type="submit" id="$band.getId()" class="btn btn-warning">Update Name</button>
-  </form>
-  <form action="/delete/band/$band.getId()" method="post">
-    <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
-    <button type="submit" id="$band.getId()" class="btn btn-danger">Delete Band</button>
-  </form></li>
-#end
-</ul>
-#else
-  <p>There are no bands yet.</p>
-#end
+	<ul>
+	#foreach ($band in $bands)
+		<li><a href="/band/$band.getId()">$band.getName()</a><h5>Click to Add Venues Played</h5></li>
+		<form action="/update/band/$band.getId()" method="get">
+	    <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
+	    <button type="submit" id="$band.getId()" class="btn btn-warning">Update Name</button>
+	  </form>
+	  <form action="/delete/band/$band.getId()" method="post">
+	    <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
+	    <button type="submit" id="$band.getId()" class="btn btn-danger">Delete Band</button>
+	  </form></li>
+	#end
+	</ul>
 <hr>
 <h2>Venues List</h2>
-#if($venues)
 <ul>
 #foreach ($venue in $venues)
 	<li>$venue.getName()</li>
 #end
 </ul>
-#else
-  <p>There are no venues yet.</p>
-#end
+<div class="copyright">
+  &#169 Michael Schennum 2016
+</div>
