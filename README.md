@@ -17,7 +17,7 @@ Open terminal and run Postgres:
 $ postgres
 ```
 
-Open a new tab in terminal and create the `hair_salon` database:
+Open a new tab in terminal and create the `concert` database:
 ```
 $ psql
 $ CREATE DATABASE concert;
