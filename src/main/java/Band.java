@@ -96,6 +96,11 @@ public class Band {
       con.createQuery(sql)
         .addParameter("id", id)
         .executeUpdate();
+
+    String deleteQuery = "DELETE FROM bands_venues WHERE band_id=:id";
+      con.createQuery(deleteQuery)
+        .addParameter("id", id)
+        .executeUpdate();
     }
   }
 }
